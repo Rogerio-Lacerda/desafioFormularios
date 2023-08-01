@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Input from './Components/Input';
+import Button from './Components/Button';
 
 const perguntas = [
   {
@@ -44,17 +45,27 @@ function App() {
     p3: '',
     p4: '',
   });
+  const [slide, setSlide] = React.useState(0);
 
   const handleChange = ({ target }) => {
     setRespostas({ ...respostas, [target.id]: target.value });
+  };
+
+  const slideProximo = () => {
+    setSlide(slide + 1);
+    console.log(perguntas.length);
+  };
+
+  const slideVoltar = () => {
+    setSlide(slide - 1);
   };
 
   return (
     <>
       <h1>Perguntas sobre React</h1>
       <section className="container">
-        <form>
-          {perguntas.map((pergunta) => {
+        <form onSubmit={(event) => event.preventDefault()}>
+          {perguntas.map((pergunta, index) => {
             return (
               <Input
                 key={pergunta.id}
@@ -63,9 +74,22 @@ function App() {
                 options={pergunta.options}
                 resposta={respostas[pergunta.id]}
                 onChange={handleChange}
+                index={index}
+                slide={slide}
               />
             );
           })}
+          <div className="btns">
+            {slide === 0 ? null : slide > perguntas.length - 1 ? null : (
+              <Button text="Voltar" onclick={slideVoltar} />
+            )}
+            {slide > perguntas.length - 1 ? null : (
+              <Button
+                text={slide === perguntas.length - 1 ? 'Finalizar' : 'Proxíma'}
+                onclick={slideProximo}
+              />
+            )}
+          </div>
         </form>
       </section>
     </>
