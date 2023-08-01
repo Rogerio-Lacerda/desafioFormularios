@@ -38,6 +38,17 @@ const perguntas = [
 ];
 
 function App() {
+  const [respostas, setRespostas] = React.useState({
+    p1: '',
+    p2: '',
+    p3: '',
+    p4: '',
+  });
+
+  const handleChange = ({ target }) => {
+    setRespostas({ ...respostas, [target.id]: target.value });
+  };
+
   return (
     <>
       <h1>Perguntas sobre React</h1>
@@ -50,6 +61,8 @@ function App() {
                 id={pergunta.id}
                 pergunta={pergunta.pergunta}
                 options={pergunta.options}
+                resposta={respostas[pergunta.id]}
+                onChange={handleChange}
               />
             );
           })}
