@@ -46,18 +46,31 @@ function App() {
     p4: '',
   });
   const [slide, setSlide] = React.useState(0);
+  const [resultado, setResultado] = React.useState(null);
 
   const handleChange = ({ target }) => {
     setRespostas({ ...respostas, [target.id]: target.value });
   };
 
+  const resultadoFinal = () => {
+    const valor = perguntas.filter(
+      ({ id, resposta }) => resposta === respostas[id],
+    );
+    setResultado(`Você acertou ${valor.length} de ${perguntas.length}`);
+  };
+
   const slideProximo = () => {
-    setSlide(slide + 1);
-    console.log(perguntas.length);
+    if (respostas[`p${slide + 1}`] === '') {
+      alert('Escolha uma opção');
+    } else {
+      setSlide(slide + 1);
+      resultadoFinal();
+    }
   };
 
   const slideVoltar = () => {
     setSlide(slide - 1);
+    resultadoFinal();
   };
 
   return (
@@ -91,6 +104,34 @@ function App() {
             )}
           </div>
         </form>
+        {slide > perguntas.length - 1 ? (
+          <p className="resultado">{resultado}</p>
+        ) : null}
+        {slide > perguntas.length - 1
+          ? perguntas.map(({ pergunta, options, resposta, id }) => (
+              <fieldset key={id} className="respostas">
+                <legend>{pergunta}</legend>
+                {options.map((item) => {
+                  if (item === resposta) {
+                    return (
+                      <p key={item} className="certa">
+                        {item}
+                      </p>
+                    );
+                  } else {
+                    return (
+                      <p
+                        key={item}
+                        className={respostas[id] === item ? 'errada' : ''}
+                      >
+                        {item}
+                      </p>
+                    );
+                  }
+                })}
+              </fieldset>
+            ))
+          : null}
       </section>
     </>
   );
