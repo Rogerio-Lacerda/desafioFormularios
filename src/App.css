@@ -12,11 +12,12 @@ body {
 
 .container {
   display: grid;
-  padding: 0.5rem;
+  padding: 0.5rem 2rem;
 }
 
 h1 {
   text-align: center;
+  margin-top: 1rem;
 }
 
 fieldset {
@@ -26,7 +27,7 @@ fieldset {
   min-height: 8rem;
   gap: 0.5rem;
   font-family: inherit;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
 }
 
 legend {
@@ -40,10 +41,32 @@ label {
   align-items: center;
   gap: 0.3rem;
   font-size: 1.2rem;
+  cursor: pointer;
+}
+
+input {
+  cursor: pointer;
 }
 
 .btns {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+}
+
+.resultado {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+.respostas p {
+  padding: 0.5rem;
+}
+
+.certa {
+  background: rgba(0, 455, 0, 0.8);
+}
+
+.errada {
+  background: #db4a2e;
 }
