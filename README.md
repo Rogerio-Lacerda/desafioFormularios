@@ -1,8 +1,11 @@
-# React + Vite
+<h1>Desafio Formulários</h1> 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p>Criei um projeto simples em React.</p>
+<p>O intuito dele é ser um formulário sobre questões de React,<br> 
+onde ele verifica as questões que o usuário selecionou e depois do usuário finalizar o formulário,<br>
+ele mostra quantas questões ele acertou e quais eram as respostas certas.
+</p>
 
-Currently, two official plugins are available:
+<h1>Link do Projeto</h1>
+<a href='https://rogerio-lacerda.github.io/desafioFormularios/'>https://rogerio-lacerda.github.io/desafioFormularios/</a>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
